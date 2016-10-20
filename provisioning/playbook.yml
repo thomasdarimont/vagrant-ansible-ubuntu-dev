@@ -15,6 +15,10 @@
   
 
   roles:
+  - { role: common }
+
+  - { role: dev-machine }
+
 # sudo ansible-galaxy install williamyeh.oracle-java
 # https://github.com/William-Yeh/ansible-oracle-java
   - { role: williamyeh.oracle-java, java_version: 8, java_subversion: 102, java_download_from_oracle: true, java_remove_download: true, java_set_javahome: true, java_install_jce: true }
@@ -23,7 +27,8 @@
 # https://github.com/angstwad/docker.ubuntu
   - { role: angstwad.docker_ubuntu, ssh_port: 2222, kernel_pkg_state: present }
 
-  - { role: dev-machine }
+# sudo ansible-galaxy install PeterMosmans.virtualbox-guest
+  - { role: PeterMosmans.virtualbox-guest, virtualbox_version: 5.1.8, virtualbox_x11: yes }
   
   tasks:
   - include: setup.yml
