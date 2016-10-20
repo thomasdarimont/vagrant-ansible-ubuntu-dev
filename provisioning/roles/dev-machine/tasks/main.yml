@@ -1,3 +1,27 @@
 ---
 - name: Install ubuntu-desktop
   apt: name=ubuntu-desktop state=present
+
+- name: Install basic dev-tools
+  apt: name={{item}} state=installed
+  with_items:
+    - bash-completion
+    - openssh-server
+    - vim
+    - git
+    - git-core
+    - git-flow
+    - git-email
+    - git-extras
+    - git-svn
+    - tig
+    - zsh
+    - curl
+    - wget
+    - htop
+    - ack-grep
+    - unzip
+    - tar
+    - gzip
+    - bzip2
+    - pwgen
