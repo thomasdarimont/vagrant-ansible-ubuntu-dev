@@ -21,4 +21,7 @@
 
 # sudo ansible-galaxy install angstwad.docker_ubuntu
 # https://github.com/angstwad/docker.ubuntu
-#  - { role: angstwad.docker_ubuntu, ssh_port: 2222, kernel_pkg_state: present }
+  - { role: angstwad.docker_ubuntu, ssh_port: 2222, kernel_pkg_state: present }
+  
+  tasks:
+  - include: setup.yml
