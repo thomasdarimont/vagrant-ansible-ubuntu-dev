@@ -4,15 +4,21 @@
   become: yes
 
   pre_tasks:
-  # Add additional repositories
+  - name: Install aptitude
+    apt: name=aptitude state=present
+
   - name: Update apt cache if needed.
     apt: update_cache=yes cache_valid_time=3600
+    
+  - name: Upgrade apt packges.
+    apt: upgrade=yes
   
-  tasks:
-  - include: java7.yml
 
   roles:
 # sudo ansible-galaxy install williamyeh.oracle-java
-#  - { role: williamyeh.oracle-java, java_version: 8, java_remove_download: true, java_set_javahome: true, java_install_jce: true }
+# https://github.com/William-Yeh/ansible-oracle-java
+  - { role: williamyeh.oracle-java, java_version: 8, java_subversion: 102, java_download_from_oracle: true, java_remove_download: true, java_set_javahome: true, java_install_jce: true }
+
 # sudo ansible-galaxy install angstwad.docker_ubuntu
+# https://github.com/angstwad/docker.ubuntu
 #  - { role: angstwad.docker_ubuntu, ssh_port: 2222, kernel_pkg_state: present }
