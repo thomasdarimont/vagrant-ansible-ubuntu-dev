@@ -1,0 +1,18 @@
+---
+- hosts: devbox
+  user: vagrant
+  become: yes
+
+  pre_tasks:
+  # Add additional repositories
+  - name: Update apt cache if needed.
+    apt: update_cache=yes cache_valid_time=3600
+  
+  tasks:
+  - include: java7.yml
+
+  roles:
+# sudo ansible-galaxy install williamyeh.oracle-java
+#  - { role: williamyeh.oracle-java, java_version: 8, java_remove_download: true, java_set_javahome: true, java_install_jce: true }
+# sudo ansible-galaxy install angstwad.docker_ubuntu
+#  - { role: angstwad.docker_ubuntu, ssh_port: 2222, kernel_pkg_state: present }
